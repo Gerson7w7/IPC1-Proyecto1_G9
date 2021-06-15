@@ -1,12 +1,14 @@
 
 package Objetos;
 
+import java.util.ArrayList;
+
 public class Factura {
     private int client;
     private String date;
-    private Producto[] products;
+    private ArrayList<Producto> products;
 
-    public Factura(int client, String date, Producto[] products) {
+    public Factura(int client, String date, ArrayList<Producto> products) {
         this.client = client;
         this.date = date;
         this.products = products;
@@ -28,12 +30,12 @@ public class Factura {
         this.date = date;
     }
 
-    public Producto[] getProducts() {
+    public ArrayList<Producto> getProducts() {
         return products;
     }
 
-    public void setProducts(Producto[] products) {
+    public void setProducts(ArrayList<Producto> products) {
         this.products = products;
     }
-        
+       
 }

@@ -1,20 +1,22 @@
 
 package Objetos;
 
+import java.util.ArrayList;
+
 public class Producto {
     private int id;
     private String name;
     private double cost;
     private double price;
-    private Ingrediente[] ingredients;
+    private ArrayList<Ingrediente> ingredients;
 
-    public Producto(int id, String name, double cost, double price, Ingrediente[] ingredients) {
+    public Producto(int id, String name, double cost, double price, ArrayList<Ingrediente> ingredients) {
         this.id = id;
         this.name = name;
         this.cost = cost;
         this.price = price;
         this.ingredients = ingredients;
-    }
+    }  
 
     public int getId() {
         return id;
@@ -48,13 +50,11 @@ public class Producto {
         this.price = price;
     }
 
-    public Ingrediente[] getIngredients() {
+    public ArrayList<Ingrediente> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(Ingrediente[] ingredients) {
+    public void setIngredients(ArrayList<Ingrediente> ingredients) {
         this.ingredients = ingredients;
-    }
-    
-    
+    }      
 }

@@ -2,20 +2,20 @@
 package Objetos;
 
 public class Usuario {
-    private String usarname;
+    private String username;
     private String password;
 
     public Usuario(String usarname, String password) {
-        this.usarname = usarname;
+        this.username = usarname;
         this.password = password;
     }
 
     public String getUsarname() {
-        return usarname;
+        return username;
     }
 
-    public void setUsarname(String usarname) {
-        this.usarname = usarname;
+    public void setUsarname(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
