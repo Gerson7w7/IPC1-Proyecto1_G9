@@ -3,16 +3,17 @@ package Objetos;
 
 import java.util.ArrayList;
 
-public class Factura {
+public class Factura extends Objeto{
     private int client;
     private String date;
     private ArrayList<Producto> products;
 
-    public Factura(int client, String date, ArrayList<Producto> products) {
+    public Factura(int id, int client, String date, ArrayList<Producto> products) {
+        super(id);
         this.client = client;
         this.date = date;
         this.products = products;
-    }
+    }   
 
     public int getClient() {
         return client;
@@ -37,5 +38,12 @@ public class Factura {
     public void setProducts(ArrayList<Producto> products) {
         this.products = products;
     }
-       
+
+    @Override
+    public String toString() {
+        return "Factura: " + "\r\n" + super.toString() + 
+                "\r\nCliente: " + client + "\r\nFecha: " + date + 
+                "\r\nProductos: " + products + "\r\n";
+    }
+        
 }

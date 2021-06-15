@@ -3,28 +3,19 @@ package Objetos;
 
 import java.util.ArrayList;
 
-public class Producto {
-    private int id;
+public class Producto extends Objeto{
     private String name;
     private double cost;
     private double price;
     private ArrayList<Ingrediente> ingredients;
 
     public Producto(int id, String name, double cost, double price, ArrayList<Ingrediente> ingredients) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.cost = cost;
         this.price = price;
         this.ingredients = ingredients;
     }  
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -56,5 +47,13 @@ public class Producto {
 
     public void setIngredients(ArrayList<Ingrediente> ingredients) {
         this.ingredients = ingredients;
-    }      
+    }    
+
+    @Override
+    public String toString() {
+        return "Producto: " + "\r\n" + super.toString() + 
+                "Nombre: " + name + "\r\nCosto: " + cost + "\r\nPrecio: " + price 
+                + "\r\nIngredientes: " + ingredients + "\r\n";
+    }
+    
 }

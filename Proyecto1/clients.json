@@ -21,6 +21,20 @@
         "nit": "786546-6"
     },
     {
+        "id": 1,
+        "name": "Darwin Arevalo",
+        "address": "Ciudad de Guatemala",
+        "phone": 42562365,
+        "nit": "5283282-3"
+    },
+    {
+        "id": 2,
+        "name": "Gerson Quiroa",
+        "address": "Ciudad de Guatemala",
+        "phone": 4568798,
+        "nit": "627775-6"
+    },
+    {
         "id": 4,
         "name": "Lit Killah",
         "address": "Buenos Aires",

@@ -15,6 +15,11 @@
         "username": "OscarTaker",
         "password": "oo"
     },
+    
+    {
+        "username": "alexizzarevalo",
+        "password": "helloworld"
+    },
     {
         "username": "bryan",
         "password": "bb"
@@ -22,6 +27,10 @@
     {
         "username": "emerson",
         "password": "ee"
+    },
+    {
+        "username": "gerson",
+        "password": "gg"
     },
     {
         "username": "Johnny",

@@ -45,5 +45,12 @@ public class Restaurante {
     public void setLoad(String load) {
         this.load = load;
     }   
+
+    @Override
+    public String toString() {
+        return "Restaurante: " + name + "\r\nDirección: " + address + 
+                "\r\nTeléfono: " + phone + "\r\nLoad: " + load + "\r\n";
+    }
+    
     
 }

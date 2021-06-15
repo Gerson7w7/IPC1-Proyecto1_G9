@@ -1,27 +1,18 @@
 
 package Objetos;
 
-public class Cliente {
-    private int id;
+public class Cliente extends Objeto{
     private String name;
     private String address;
     private int phone;
     private String nit;
 
     public Cliente(int id, String name, String address, int phone, String nit) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.nit = nit;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -55,5 +46,11 @@ public class Cliente {
     public void setNit(String nit) {
         this.nit = nit;
     }
-        
+
+    @Override
+    public String toString() {
+        return super.toString() + "Cliente: " + name + "\r\nDirección: " + address 
+                + "\r\nTeléfono: " + phone + "\r\nNit: " + nit + "\r\n";
+    }
+ 
 }
