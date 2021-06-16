@@ -1,7 +1,9 @@
 
 package Objetos;
 
-public class Restaurante {
+import java.io.Serializable;
+
+public class Restaurante implements Serializable{
     private String name;
     private String address;
     private int phone;

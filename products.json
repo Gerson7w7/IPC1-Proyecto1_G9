@@ -1,0 +1,106 @@
+[
+    {
+        "id": 1,
+        "name": "Pizza",
+        "description": "Pizza Hawaiana con queso",
+        "cost": 40,
+        "price": 50,
+        "ingredients": [
+            {
+                "name": "Piña",
+                "quantity": 1,
+                "units": "Unidades"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Pizza",
+        "description": "Pizza de Peperoni",
+        "cost": 15,
+        "price": 40,
+        "ingredients": [
+            {
+                "name": "Peperoni",
+                "quantity": 7,
+                "units": "Unidades"
+            },
+            {
+                "name": "Queso",
+                "quantity": 1,
+                "units": "Unidades"
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Pizza",
+        "description": "Pizza Hawaiana con queso",
+        "cost": 40,
+        "price": 50,
+        "ingredients": [
+            {
+                "name": "Piña",
+                "quantity": 1,
+                "units": "Unidades"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Hamburguesa",
+        "description": "Hamburguesa con tocino",
+        "cost": 30,
+        "price": 46,
+        "ingredients": [
+            {
+                "name": "Tocino",
+                "quantity": 3,
+                "units": "Unidades"
+            },
+            {
+                "name": "Queso",
+                "quantity": 2,
+                "units": "Unidades"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Hamburguesa",
+        "description": "Hamburguesa simple",
+        "cost": 20,
+        "price": 36,
+        "ingredients": [
+            {
+                "name": "Carne",
+                "quantity": 1,
+                "units": "Unidades"
+            },
+            {
+                "name": "Queso",
+                "quantity": 2,
+                "units": "Unidades"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Hamburguesa",
+        "description": "Hamburguesa con tocino",
+        "cost": 30,
+        "price": 46,
+        "ingredients": [
+            {
+                "name": "Tocino",
+                "quantity": 3,
+                "units": "Unidades"
+            },
+            {
+                "name": "Queso",
+                "quantity": 2,
+                "units": "Unidades"
+            }
+        ]
+    }
+]

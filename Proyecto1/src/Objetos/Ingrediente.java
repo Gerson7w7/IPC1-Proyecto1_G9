@@ -1,7 +1,9 @@
 
 package Objetos;
 
-public class Ingrediente {
+import java.io.Serializable;
+
+public class Ingrediente implements Serializable{
     private String name;
     private int quantity;
     private String units;

@@ -1,9 +1,10 @@
 
 package Objetos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Producto extends Objeto{
+public class Producto extends Objeto implements Serializable{
     private String name;
     private double cost;
     private double price;

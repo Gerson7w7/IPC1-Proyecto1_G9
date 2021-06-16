@@ -1,7 +1,9 @@
 
 package Objetos;
 
-public class Objeto {
+import java.io.Serializable;
+
+public class Objeto implements Serializable{
     protected int id;
 
     public Objeto(int id) {

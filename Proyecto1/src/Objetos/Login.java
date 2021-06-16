@@ -1,11 +1,11 @@
 package Objetos;
 
 import java.io.Console;
+import java.util.ConcurrentModificationException;
 import main.*;
 import static main.CargaMasiva.fechaHoraActuales;
 
 public class Login {
-
     Menu menu;
 
     public Login() {
@@ -14,6 +14,7 @@ public class Login {
 
     public void login() {
         while (true) {
+            try{
 //-----------------------------------PARA CMD------------------------------------------
 
 //            Console console = System.console();
@@ -32,6 +33,7 @@ public class Login {
             String pass = Menu.scanner.nextLine();
 
 // --------------------PARA ENTRAR AL MENÚ -----------------------------------
+    
             if (username.equals("0") && pass.equals("0")) {
                 System.exit(0);
             } else {
@@ -49,6 +51,9 @@ public class Login {
                         Log.addToEndFile("log.log", log);                     
                     } 
                 }
+            }
+            }catch(ConcurrentModificationException e){
+                System.out.println("Para actualizar correctamente vuelva a iniciar el programa.");
             }
         }
     }

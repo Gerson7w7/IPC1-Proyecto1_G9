@@ -1,7 +1,9 @@
 
 package Objetos;
 
-public class Cliente extends Objeto{
+import java.io.Serializable;
+
+public class Cliente extends Objeto implements Serializable{
     private String name;
     private String address;
     private int phone;

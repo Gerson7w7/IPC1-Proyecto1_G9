@@ -1,9 +1,10 @@
 
 package Objetos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Factura extends Objeto{
+public class Factura extends Objeto implements Serializable{
     private int client;
     private String date;
     private ArrayList<Producto> products;
@@ -42,7 +43,7 @@ public class Factura extends Objeto{
     @Override
     public String toString() {
         return "Factura: " + "\r\n" + super.toString() + 
-                "\r\nCliente: " + client + "\r\nFecha: " + date + 
+                "Cliente: " + client + "\r\nFecha: " + date + 
                 "\r\nProductos: " + products + "\r\n";
     }
         
