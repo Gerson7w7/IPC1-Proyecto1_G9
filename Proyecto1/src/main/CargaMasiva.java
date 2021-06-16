@@ -142,10 +142,10 @@ public class CargaMasiva {
 
     public void cargaDatosBin() {
         try {
-            users = (ArrayList<Usuario>) serializar.deserialize("Usuarios");
-            products = (ArrayList<Producto>) serializar.deserialize("Productos");
-            clients = (ArrayList<Cliente>) serializar.deserialize("Clientes");
-            invoices = (ArrayList<Factura>) serializar.deserialize("Facturas");
+            users = (ArrayList<Usuario>) serializar.deserialize("Usuarios.ipcrm");
+            products = (ArrayList<Producto>) serializar.deserialize("Productos.ipcrm");
+            clients = (ArrayList<Cliente>) serializar.deserialize("Clientes.ipcrm");
+            invoices = (ArrayList<Factura>) serializar.deserialize("Facturas.ipcrm");
             System.out.println("");
         } catch (Exception e) {
 
@@ -191,10 +191,10 @@ public class CargaMasiva {
 
     public void guardarDatosBin() {
         try {
-            serializar.serialize("Usuarios", users); //serialización de usuarios
-            serializar.serialize("Productos", products); //serialización de productos
-            serializar.serialize("Clientes", clients); //serialización de clientes
-            serializar.serialize("Facturas", invoices); //serialización de facturas
+            serializar.serialize("Usuarios.ipcrm", users); //serialización de usuarios
+            serializar.serialize("Productos.ipcrm", products); //serialización de productos
+            serializar.serialize("Clientes.ipcrm", clients); //serialización de clientes
+            serializar.serialize("Facturas.ipcrm", invoices); //serialización de facturas
             System.out.println("Se han guardado los cambios! :D");
         } catch (Exception e) {
             System.out.println("Ocurrió un error. :(");
