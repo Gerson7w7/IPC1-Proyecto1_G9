@@ -85,6 +85,7 @@ public class Menu {
                     eliminar(CargaMasiva.users);
                     break;
                 case 3:
+                    ver(CargaMasiva.users);
                     break;
                 case 4:
                     menu = false;
@@ -100,7 +101,7 @@ public class Menu {
         while (menu) {
             System.out.println(" ");
             System.out.println("--------------------------------------------------------------------------------------------");
-            System.out.println("|                                   USUARIOS                                               |");
+            System.out.println("|                                   PRODUCTOS                                              |");
             System.out.println("|  Ingrese la opcion deseada                                                               |");
             System.out.println("|    1.Listar producto                                    2.Eliminar producto              |");
             System.out.println("|    3.Ver producto                                       4.Menú principal                 |");
@@ -116,6 +117,7 @@ public class Menu {
                     eliminar(CargaMasiva.products);
                     break;
                 case 3:
+                    ver(CargaMasiva.products);
                     break;
                 case 4:
                     menu = false;
@@ -125,13 +127,13 @@ public class Menu {
             }
         }
     }
-    
+
     public void menuCliente() {
         menu = true;
         while (menu) {
             System.out.println(" ");
             System.out.println("--------------------------------------------------------------------------------------------");
-            System.out.println("|                                   USUARIOS                                               |");
+            System.out.println("|                                   CLIENTE                                                |");
             System.out.println("|  Ingrese la opcion deseada                                                               |");
             System.out.println("|    1.Listar clientes                                    2.Eliminar cliente               |");
             System.out.println("|    3.Ver cliente                                        4.Menú principal                 |");
@@ -147,6 +149,7 @@ public class Menu {
                     eliminar(CargaMasiva.clients);
                     break;
                 case 3:
+                    ver(CargaMasiva.clients);
                     break;
                 case 4:
                     menu = false;
@@ -156,13 +159,13 @@ public class Menu {
             }
         }
     }
-    
+
     public void menuFactura() {
         menu = true;
         while (menu) {
             System.out.println(" ");
             System.out.println("--------------------------------------------------------------------------------------------");
-            System.out.println("|                                   USUARIOS                                               |");
+            System.out.println("|                                   FACTURA                                                |");
             System.out.println("|  Ingrese la opcion deseada                                                               |");
             System.out.println("|    1.Listar facturas                                    2.Eliminar factura               |");
             System.out.println("|    3.Ver factura                                        4.Menú principal                 |");
@@ -178,6 +181,7 @@ public class Menu {
                     eliminar(CargaMasiva.invoices);
                     break;
                 case 3:
+                    ver(CargaMasiva.invoices);
                     break;
                 case 4:
                     menu = false;
@@ -200,14 +204,31 @@ public class Menu {
         }
     }
 
-    public void eliminar(ArrayList listar) {
-        ArrayList<Objeto> lista = listar;
+    public void eliminar(ArrayList eliminar) {
+        ArrayList<Objeto> listar = eliminar;
         System.out.println("Ingrese el id que quiere eliminar: ");
         int delete = Integer.parseInt(scanner.nextLine());
 
-//        for (Object lista : listar) {
-//            
-//        }
+        for (Objeto lista : listar) {
+            if (lista.getId() == delete) {
+                listar.remove(lista);
+                System.out.println("Se ha eliminado correctamente. :D");
+                break;
+            }
+        }
+    }
+
+    public void ver(ArrayList ver) {
+        ArrayList<Objeto> listar = ver;
+        System.out.println("Ingrese el id que quiere ver: ");
+        int see = Integer.parseInt(scanner.nextLine());
+        
+        for(Objeto lista: listar){
+            if(lista.getId() == see){
+                System.out.println(lista);
+                break;
+            }
+        }
     }
 
 }

@@ -89,21 +89,18 @@ public class CargaMasiva {
         Producto[] productos = gson.fromJson(datos, Producto[].class);
         products.addAll(Arrays.asList(productos));
         
-        //POSIBLE CAMBIO
         repeticiones(products);
 
         datos = getContentOfFile("clients.json");
         Cliente[] clientes = gson.fromJson(datos, Cliente[].class);
         clients.addAll(Arrays.asList(clientes));
         
-        //POSIBLE CAMBIO
         repeticiones(clients);
 
         datos = getContentOfFile("invoices.json");
         Factura[] facturas = gson.fromJson(datos, Factura[].class);
         invoices.addAll(Arrays.asList(facturas));
         
-        //POSIBLE CAMBIO
         repeticiones(invoices);
     }   
     

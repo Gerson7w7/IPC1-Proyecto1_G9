@@ -53,7 +53,7 @@ public class Producto extends Objeto{
     public String toString() {
         return "Producto: " + "\r\n" + super.toString() + 
                 "Nombre: " + name + "\r\nCosto: " + cost + "\r\nPrecio: " + price 
-                + "\r\nIngredientes: " + ingredients + "\r\n";
+                + "\r\nIngredientes:\r\n" + ingredients + "\r\n";
     }
     
 }

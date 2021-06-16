@@ -35,5 +35,10 @@ public class Ingrediente {
     public void setUnits(String units) {
         this.units = units;
     }
-       
+
+    @Override
+    public String toString() {
+        return "\r\nIngrediente: " + "\r\nnombre: " + name + 
+                "\r\nCantidad: " + quantity + "\r\nUnidades: " + units + "\r\n";
+    }  
 }
