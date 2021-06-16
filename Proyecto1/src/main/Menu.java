@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Objetos.*;
+import static main.CargaMasiva.fechaHoraActuales;
 
 public class Menu {
 
@@ -124,7 +125,7 @@ public class Menu {
                         listar(CargaMasiva.products);
                         break;
                     case 2:
-                        eliminar(CargaMasiva.products);
+                        eliminarP(CargaMasiva.products);
                         break;
                     case 3:
                         ver(CargaMasiva.products);
@@ -160,7 +161,7 @@ public class Menu {
                         listar(CargaMasiva.clients);
                         break;
                     case 2:
-                        eliminar(CargaMasiva.clients);
+                        eliminarC(CargaMasiva.clients);
                         break;
                     case 3:
                         ver(CargaMasiva.clients);
@@ -196,7 +197,7 @@ public class Menu {
                         listar(CargaMasiva.invoices);
                         break;
                     case 2:
-                        eliminar(CargaMasiva.invoices);
+                        eliminarF(CargaMasiva.invoices);
                         break;
                     case 3:
                         ver(CargaMasiva.invoices);
@@ -225,15 +226,67 @@ public class Menu {
         }
     }
 
-    public void eliminar(ArrayList eliminar) {
+    public void eliminarP(ArrayList eliminar) {
         try {
-            ArrayList<Objeto> listar = eliminar;
-            System.out.println("Ingrese el id que quiere eliminar:");
+            ArrayList<Producto> productos = eliminar;
+            System.out.println("Ingrese el id del producto que quiere eliminar:");
             int delete = Integer.parseInt(scanner.nextLine());
 
-            for (Objeto lista : listar) {
-                if (lista.getId() == delete) {
-                    listar.remove(lista);
+            for (Producto producto : productos) {
+                if (producto.getId() == delete) {
+                    String log = fechaHoraActuales
+                            + "\t\t" + CargaMasiva.users.get(Login.usuario).getUsername()
+                            + ": Eliminó el producto \"" + producto.getName()
+                            + "\" con id " + producto.getId() + ".\r\n";
+                    Log.addToEndFile("log.log", log);
+                    productos.remove(producto);
+                    System.out.println("Se ha eliminado correctamente. :D");
+                    break;
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Ingrese un número.\r\n");
+        }
+    }
+
+    public void eliminarC(ArrayList eliminar) {
+        try {
+            ArrayList<Cliente> clientes = eliminar;
+            System.out.println("Ingrese el id del cliente que quiere eliminar:");
+            int delete = Integer.parseInt(scanner.nextLine());
+
+            for (Cliente cliente : clientes) {
+                if (cliente.getId() == delete) {
+                    String log = fechaHoraActuales
+                            + "\t\t" + CargaMasiva.users.get(Login.usuario).getUsername()
+                            + ": Eliminó el cliente \"" + cliente.getName()
+                            + "\" con id " + cliente.getId() + ".\r\n";
+                    Log.addToEndFile("log.log", log);
+                    clientes.remove(cliente);
+                    System.out.println("Se ha eliminado correctamente. :D");
+                    break;
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Ingrese un número.\r\n");
+        }
+    }
+
+    public void eliminarF(ArrayList eliminar) {
+        try {
+            ArrayList<Factura> facturas = eliminar;
+            System.out.println("Ingrese el id del cliente que quiere eliminar:");
+            int delete = Integer.parseInt(scanner.nextLine());
+
+            for (Factura factura : facturas) {
+                if (factura.getId() == delete) {
+                    String log = fechaHoraActuales
+                            + "\t\t" + CargaMasiva.users.get(Login.usuario).getUsername()
+                            + ": Eliminó la factura del  \"cliente "
+                            + factura.getClient() + "\" con id " + factura.getId()
+                            + ".\r\n";
+                    Log.addToEndFile("log.log", log);
+                    facturas.remove(factura);
                     System.out.println("Se ha eliminado correctamente. :D");
                     break;
                 }
@@ -244,18 +297,18 @@ public class Menu {
     }
 
     public void ver(ArrayList ver) {
-        try{
-        ArrayList<Objeto> listar = ver;
-        System.out.println("Ingrese el id que quiere ver:");
-        int see = Integer.parseInt(scanner.nextLine());
+        try {
+            ArrayList<Objeto> listar = ver;
+            System.out.println("Ingrese el id que quiere ver:");
+            int see = Integer.parseInt(scanner.nextLine());
 
-        for (Objeto lista : listar) {
-            if (lista.getId() == see) {
-                System.out.println(lista);
-                break;
+            for (Objeto lista : listar) {
+                if (lista.getId() == see) {
+                    System.out.println(lista);
+                    break;
+                }
             }
-        }
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("Ingrese un número. \r\n");
         }
     }
@@ -267,6 +320,10 @@ public class Menu {
 
         for (Usuario user : users) {
             if (user.getUsername().equals(delete)) {
+                String log = fechaHoraActuales
+                        + "\t\t" + CargaMasiva.users.get(Login.usuario).getUsername() 
+                        + ": Eliminó al usuario " + user.getUsername() + ".\r\n";
+                Log.addToEndFile("log.log", log);
                 users.remove(user);
                 System.out.println("Se ha eliminado el usuario correctamente. :D");
                 break;

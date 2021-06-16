@@ -3,7 +3,7 @@ package main;
 import Objetos.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) {       
         CargaMasiva cargaMasiva = new CargaMasiva();
         Login login = new Login();
         cargaMasiva.cargaConfig();
@@ -18,8 +18,7 @@ public class Main {
             default:
                 System.out.println("No se han podido cargar los datos, verifique que la configuración sea correcta.");
                 break;
-        }
-     
+        }     
         login.login();
     }
 }
