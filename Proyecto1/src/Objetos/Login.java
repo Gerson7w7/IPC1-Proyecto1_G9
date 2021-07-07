@@ -1,64 +1,48 @@
 package Objetos;
 
-import java.io.Console;
+import interfazgrafica.*;
 import java.util.ConcurrentModificationException;
+import javax.swing.*;
 import main.*;
 import static main.CargaMasiva.fechaHoraActuales;
+import static main.CargaMasiva.users;
 
 public class Login {
 
     Menu menu;
-    public static int usuario = 0;
+    public static VentanaMenu ventanaMenu;
+    public static int usuario;
 
     public Login() {
-        this.menu = new Menu();
+        menu = new Menu();
     }
 
-    public void login() {
-        while (true) {
-            try {
-//-----------------------------------PARA CMD------------------------------------------
-
-//            Console console = System.console();
-//            System.out.println("============================== LOGIN ============================");
-//            System.out.println("Ingrese su usuario ");
-//            String username = console.readLine();
-//            System.out.println("Ingrese su contraseña: ");
-//            char[] password = console.readPassword();
-//            String pass = String.valueOf(password);
-//      --------------------- PARA IDE ------------------------------------
-                System.out.println("============================== LOGIN ============================");
-                System.out.println("Si desea cerrar el programa ingrese un cero (0) en usuario y contraseña");
-                System.out.println("Ingrese su usuario: ");
-                String username = Menu.scanner.nextLine();
-                System.out.println("Ingrese su contraseña: ");
-                String pass = Menu.scanner.nextLine();
-
+    public void login(String username, String pass) {
+        try {
+            usuario = 0;
 // --------------------PARA ENTRAR AL MENÚ -----------------------------------
-                if (username.equals("0") && pass.equals("0")) {
-                    System.exit(0);
-                } else {
-                    for (Usuario user : CargaMasiva.users) {
-                        
-                        if (username.equals(user.getUsername()) && pass.equals(user.getPassword())) {
+            for (Usuario user : users) {
+                if (username.equals(user.getUsername()) && pass.equals(user.getPassword())) {
+                    String log = fechaHoraActuales
+                            + "\t\t" + user.getUsername() + ": Inicio de sesión exitoso.\r\n";
+                    Log.addToEndFile("log.log", log);
+                    ventanaMenu = new VentanaMenu();
+                    ventanaMenu.setVisible(true);
+                    Main.login.dispose();
+                    ventanaMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-                            String log = fechaHoraActuales
-                                    + "\t\t" + user.getUsername() + ": Inicio de sesión exitoso.\r\n";
-                            Log.addToEndFile("log.log", log);
-                            menu.menu();
+                } else if (username.equals(user.getUsername()) && !pass.equals(user.getPassword())) {
+                    String m = "Contraseña incorrecta, intente de nuevo. \r\n";
+                    JOptionPane.showMessageDialog(ventanaMenu, m, "Error", 2);
+                    String log = fechaHoraActuales
+                            + "\t\t" + user.getUsername() + ": Inicio de sesión fallido.\r\n";
+                    Log.addToEndFile("log.log", log);
 
-                        } else if (username.equals(user.getUsername()) && !pass.equals(user.getPassword())) {
-                            System.out.println("Contraseña incorrecta, intente de nuevo. \r\n");
-                            String log = fechaHoraActuales
-                                    + "\t\t" + user.getUsername() + ": Inicio de sesión fallido.\r\n";
-                            Log.addToEndFile("log.log", log);
-                        }
-                        usuario++;
-                    }
                 }
-            } catch (ConcurrentModificationException e) {
-                System.out.println("Para actualizar correctamente vuelva a iniciar el programa.");
+                usuario++;
             }
+        } catch (ConcurrentModificationException e) {
+            System.out.println("Para actualizar correctamente vuelva a iniciar el programa.");
         }
     }
 }

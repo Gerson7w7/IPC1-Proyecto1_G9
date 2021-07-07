@@ -1,13 +1,17 @@
-
 package main;
-import Objetos.*;
+
+import interfazgrafica.*;
+import javax.swing.JFrame;
 
 public class Main {
-    public static void main(String[] args) {       
+
+    public static VentanaLogin login;
+
+    public static void main(String[] args) {
         CargaMasiva cargaMasiva = new CargaMasiva();
-        Login login = new Login();
+        login = new VentanaLogin();
+
         cargaMasiva.cargaConfig();
-        
         switch (CargaMasiva.restaurant.getLoad()) {
             case "bin":
                 cargaMasiva.cargaDatosBin();
@@ -18,7 +22,10 @@ public class Main {
             default:
                 System.out.println("No se han podido cargar los datos, verifique que la configuración sea correcta.");
                 break;
-        }     
-        login.login();
+        }
+
+        login.setVisible(true);
+        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 }

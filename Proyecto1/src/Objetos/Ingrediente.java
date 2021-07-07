@@ -1,9 +1,9 @@
-
 package Objetos;
 
 import java.io.Serializable;
 
-public class Ingrediente implements Serializable{
+public class Ingrediente implements Serializable {
+
     private String name;
     private int quantity;
     private String units;
@@ -40,7 +40,6 @@ public class Ingrediente implements Serializable{
 
     @Override
     public String toString() {
-        return "\r\nIngrediente: " + "\r\nnombre: " + name + 
-                "\r\nCantidad: " + quantity + "\r\nUnidades: " + units + "\r\n";
-    }  
+        return name;
+    }
 }

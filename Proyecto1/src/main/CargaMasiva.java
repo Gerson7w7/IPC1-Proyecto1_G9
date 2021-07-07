@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 public class CargaMasiva {
 
@@ -28,10 +29,10 @@ public class CargaMasiva {
     public Serializacion serializar;
 
     public CargaMasiva() {
-        this.users = new ArrayList<>();
-        this.products = new ArrayList<>();
-        this.clients = new ArrayList<>();
-        this.invoices = new ArrayList<>();
+        CargaMasiva.users = new ArrayList<>();
+        CargaMasiva.products = new ArrayList<>();
+        CargaMasiva.clients = new ArrayList<>();
+        CargaMasiva.invoices = new ArrayList<>();
         this.serializar = new Serializacion();
     }
 
@@ -120,19 +121,19 @@ public class CargaMasiva {
             Producto[] productos = gson.fromJson(datos, Producto[].class);
             products.addAll(Arrays.asList(productos));
 
-            repeticiones(products);
+            repeticiones(products, 0);
 
             datos = getContentOfFile("clients.json");
             Cliente[] clientes = gson.fromJson(datos, Cliente[].class);
             clients.addAll(Arrays.asList(clientes));
 
-            repeticiones(clients);
+            repeticiones(clients, 1);
 
             datos = getContentOfFile("invoices.json");
             Factura[] facturas = gson.fromJson(datos, Factura[].class);
             invoices.addAll(Arrays.asList(facturas));
 
-            repeticiones(invoices);
+            repeticiones(invoices, 2);
 
             System.out.println("");
         } catch (JsonSyntaxException e) {
@@ -152,13 +153,29 @@ public class CargaMasiva {
         }
     }
 
-    public void repeticiones(ArrayList lista) {
+    public void repeticiones(ArrayList lista, int t) {
         ArrayList<Objeto> listaa = lista;
         for (int i = 0; i < listaa.size() - 1; i++) {
             for (int j = i + 1; j < listaa.size(); j++) {
                 if (listaa.get(i).getId() == listaa.get(j).getId()) {
-                    String log = fechaHoraActuales
-                            + "\t\tINVOICES: El id " + listaa.get(j).getId() + " ya existe, se omitió el registro.\r\n";
+                    String log = "";
+                    switch (t) {
+                        case 0:
+                            log = fechaHoraActuales
+                                    + "\t\tPRODUCTS: El id " + listaa.get(j).getId()
+                                    + " ya existe, se omitió el registro.\r\n";
+                            break;
+                        case 1:
+                            log = fechaHoraActuales
+                                    + "\t\tCLIENTS: El id " + listaa.get(j).getId()
+                                    + " ya existe, se omitió el registro.\r\n";
+                            break;
+                        case 2:
+                            log = fechaHoraActuales
+                                    + "\t\tINVOICES: El id " + listaa.get(j).getId()
+                                    + " ya existe, se omitió el registro.\r\n";
+                            break;
+                    }
                     Log.addToEndFile("errors.log", log);
                     listaa.remove(j);
                     break;
@@ -168,25 +185,18 @@ public class CargaMasiva {
         Log.addToEndFile("errors.log", "\r\n");
     }
 
-    public void guardarDatosJson() {
-        try {
-            String datos = prettyGson.toJson(users);
-            createFile("users.json", datos);
-            
-            datos = prettyGson.toJson(products);
-            createFile("products.json", datos);
-            
-            datos = prettyGson.toJson(clients);
-            createFile("clients.json", datos);
-            
-            datos = prettyGson.toJson(invoices);
-            createFile("invoices.json", datos);
-            
-            System.out.println("Se han guardado los cambios! :D");
+    public static void guardarDatosJson() throws JsonIOException {
+        String datos = prettyGson.toJson(users);
+        createFile("users.json", datos);
 
-        } catch (JsonIOException e) {
-            System.out.println("Ocurrió un error. :(");
-        }
+        datos = prettyGson.toJson(products);
+        createFile("products.json", datos);
+
+        datos = prettyGson.toJson(clients);
+        createFile("clients.json", datos);
+
+        datos = prettyGson.toJson(invoices);
+        createFile("invoices.json", datos);
     }
 
     public void guardarDatosBin() {

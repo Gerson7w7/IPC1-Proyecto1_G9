@@ -14,62 +14,7 @@ public class Menu {
     public Menu() {
         cargaMasiva = new CargaMasiva();
     }
-
-    private void mHeader() {
-        System.out.println(" ");
-        System.out.println("--------------------------------------------------------------------------------------------");
-        System.out.println("|                                   BIENVENIDOS                                            |");
-        System.out.println("|  Ingrese la opcion deseada                                                               |");
-        System.out.println("|    1.Información del restaurante                        2.Usuarios                       |");
-        System.out.println("|    3.Productos                                          4.Clientes                       |");
-        System.out.println("|    5.Facturas                                           6.Guardar cambios                |");
-        System.out.println("|    7.Cerrar programa                                                                     |");
-        System.out.println("|                               Ingrese su opción                                          |");
-        System.out.println("--------------------------------------------------------------------------------------------");
-    }
-
-    public void menu() {
-        while (true) {
-            mHeader();
-            opciones();
-        }
-    }
-
-    public void opciones() {
-        try {
-            System.out.println("¿Qué desea realizar?");
-            int op = Integer.parseInt(scanner.nextLine());
-
-            switch (op) {
-                case 1:
-                    mostrar(CargaMasiva.restaurant);
-                    break;
-                case 2:
-                    menuUsuario();
-                    break;
-                case 3:
-                    menuProducto();
-                    break;
-                case 4:
-                    menuCliente();
-                    break;
-                case 5:
-                    menuFactura();
-                    break;
-                case 6:
-                    menuGuardarCambios();
-                    break;
-                case 7:
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Opción fuera de rango.");
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Ingrese un número.");
-        }
-    }
-
+  
     public void menuUsuario() {
         try {
             menu = true;
@@ -321,7 +266,7 @@ public class Menu {
         for (Usuario user : users) {
             if (user.getUsername().equals(delete)) {
                 String log = fechaHoraActuales
-                        + "\t\t" + CargaMasiva.users.get(Login.usuario).getUsername() 
+                        + "\t\t" + CargaMasiva.users.get(Login.usuario).getUsername()
                         + ": Eliminó al usuario " + user.getUsername() + ".\r\n";
                 Log.addToEndFile("log.log", log);
                 users.remove(user);
